@@ -1,4 +1,4 @@
-class BooksController < ApplicationController
+  class BooksController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    authorize! :manage, @book
   end
 
   def create
@@ -28,11 +29,13 @@ class BooksController < ApplicationController
   end
 
   def update
+    authorize! :manage, @book
     @book.update(book_params)
     respond_with(@book)
   end
 
   def destroy
+    authorize! :manage, @book
     @book.destroy
     respond_with(@book)
   end
