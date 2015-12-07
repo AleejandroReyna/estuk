@@ -47,3 +47,5 @@ gem 'devise'
 gem 'cancancan'
 
 gem 'paperclip'
+
+gem 'dotenv-rails', groups: [:development]
